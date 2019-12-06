@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click=jian>-</button>
+        <span>{{num}}</span>
+        <button @click=jia>+</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                num:1,
+            },
+            methods: {
+                jian:function(){
+                    this.num--;
+                    if(this.num==0){
+                        alert('不能再少了');
+                        this.num=1;
+                    }
+                },
+                jia:function(){
+                    
+                    if(this.num<10){
+                        this.num++
+                        
+                       //this.num=9;
+                    }else{
+                        alert('不能再多了');
+                    }
+                }
+            },
+        })
+    </script>
+</body>
+</html>

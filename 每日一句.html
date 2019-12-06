@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            margin-top: 150px;
+        }
+        .one {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        p{
+            text-align: center;
+        }
+        img{
+            width: 100%;
+        }
+        #app{
+            margin: 0 auto;
+            width: 400px;
+        }
+    </style>
+    <div>
+        <p class="one" id="text"></p>
+        <p class="one" id="yy"></p>
+        <p id="date"></p>
+        
+    </div>
+    <div id="app">
+        <img :src="isSrc[Math.ceil(Math.random()*(isSrc.length-1))]" alt="">
+        <p v-text = 'txt'>{{message}}</p>
+    </div>
+</head>
+<body>
+    <script src="vue.js"></script>
+    <script>
+        function getColor(color){
+            var col="rgb(";
+                for(var i=0;i<3;i++){
+                    col+=Math.floor(Math.random()*256)+",";
+                }
+                // col+=Math.random().toFixed(2)+")";
+                return col;
+        }
+        let texte = document.querySelector('#text');
+        let date = document.querySelector('#date');
+        let yyu = document.querySelector('#yy');
+        let xhr = new XMLHttpRequest();
+        var txt =''
+        xhr.open('get','https://api.ooopn.com/ciba/api.php?type=json');
+        xhr.send();
+        xhr.onload=function(){
+           let text = JSON.parse(xhr.responseText);
+        //    let txt =''
+           txt +=text["ciba"];//文本内容
+          let timer = text.date;//时间
+          let yy = text["ciba-en"];
+            yyu.innerHTML=yy;
+          texte.innerText = txt;
+          document.querySelector('.one').style.color = getColor();
+          date.innerHTML = timer;
+          console.log(timer)
+           console.log(txt);
+           //document.write(text)
+        }
+        let app = new Vue({
+            el:'#app',
+            data:{
+                isSrc:[
+                './images/00.jpg',
+                  './images/01.jpg',
+                  './images/02.jpg',
+                  './images/03.jpg',
+                  './images/04.jpg',
+                  './images/05.jpg',
+                  './images/06.jpg',
+                  './images/07.jpg',
+                  './images/08.jpg',
+                  './images/09.jpg',
+                  './images/10.jpg',
+                ],
+                index:0,
+                // message:'txt',
+            }
+        })
+        
+        // let xhr = new XMLHttpRequest();
+        // xhr.open('get','http://open.iciba.com/dsapi')
+        // xhr.send();
+        // xhr.onload = function(){
+        //     let text = xhr.responseText;
+        //     let txt = text["note"];
+        //     console.log( text)
+        // }
+    </script>
+</body>
+</html>

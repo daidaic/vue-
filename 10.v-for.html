@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="添加数据" @click=add>
+        <input type="button" value="删除数据" @click=remove>
+        <ul>
+            <li v-for='(item,index) in arr'>
+               {{index}} 上分大省:{{item}}
+            </li>
+        </ul>
+        <h2 v-for='it in eat'>{{it.name}}</h2>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                arr:['白金','荷兰','天龙','菏泽'],
+                eat:[
+                    {name:'克马'},
+                    {name:'皮球'}
+                ]
+            },
+            methods: {
+                add:function(){
+                    this.eat.push({name:'苦瓜汤'})
+                },
+                remove:function(){
+                    this.eat.shift();
+                }
+            },
+        })
+    </script>
+</body>
+</html>

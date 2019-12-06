@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click=setM>更改message</button>
+        <input type="text" v-model='message' @keyup.enter=getM>
+        <h2>{{message}}</h2>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app =new Vue({
+            el:'#app',
+            data:{
+                message:'山东菏泽'
+            },
+            methods: {
+                getM:function(){
+                    alert(this.message)
+                },
+                setM:function(){
+                    this.message='更改了'
+                }
+            },
+        })
+    </script>
+</body>
+</html>

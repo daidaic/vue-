@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        {{message}}
+        <h2>{{school.name}}-{{school.phone}}</h2>
+        <ul>
+            <li>{{eat[0]}}</li>
+            <li>{{eat[1]}}</li>
+        </ul>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue({
+            el:'#box',
+            data:{
+                message:'嗨马',
+                school:{
+                    name:'湖北校区',
+                    phone:123456,
+                },
+                eat:['西红柿','克马']
+            }
+        })
+    </script>
+</body>
+</html>

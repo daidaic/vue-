@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="点击" @click=doit(666)>
+        <input type="text" name="" id="" @keyup.enter = sayHi>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            methods: {
+                doit:function(p1){
+                    console.log('做it');
+                    console.log(p1);
+                },
+                sayHi:function(){
+                    console.log('您吃了没')
+                }
+            },
+        })
+    </script>
+</body>
+</html>

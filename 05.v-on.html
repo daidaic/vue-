@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="事件绑定" v-on:click=dolf>
+        <input type="button" value="v-on简写" @click=dolf>
+        <h2 @click=foot>{{food}}</h2>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                food:'克马'
+            },
+            methods: {
+                dolf:function(){
+                    alert(1)
+                },
+                foot:function(){
+                    this.food+='1s';
+                },
+            },
+        })
+    </script>
+</body>
+</html>

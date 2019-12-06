@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button @click=gaibian>点击</button>
+        <p v-if='true'>我是一号p</p>
+        <p v-if='isShow'> 我是二号p</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                isShow: false,
+            },
+            methods: {
+                gaibian: function () {
+                    this.isShow = !this.isShow;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

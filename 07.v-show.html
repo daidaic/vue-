@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <img v-show='isShow' src="images/08028.jpg" alt="" >
+        <button @click=change>切换显示</button>
+        <img v-show='age<18' src="images/08028.jpg" alt="" >
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue ({
+            el:'#app',
+            data:{
+                isShow:false,
+                age:17
+            },
+            methods: {
+                change:function(){
+                    this.isShow = !this.isShow;
+                }
+            },
+        })
+    </script>
+</body>
+</html>
