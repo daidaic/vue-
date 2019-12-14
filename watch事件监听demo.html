@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model.lazy='msg'>
+        <p>{{msgxia}}</p>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                msg:'',
+                msgxia:'',
+            },
+            methods: {
+               checkName:function(msg){
+                    let that = this;
+                    setTimeout(function(){
+                        if(msg=='lisi'){
+                            that.msgxia='用户名已存在,请重新输入';
+                        }else{
+                            that.msgxia='可以使用'
+                        }
+                      
+                    },2000)
+               }
+            },
+            watch: {
+                msg:function(val){
+                    this.checkName(val);
+                    this.msgxia='请等待.....';
+                }
+            },
+        })
+    </script>
+</body>
+</html>
