@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <zz>
+            <p slot="header">
+                标题信息
+            </p>
+            <p>主要信息1</p>
+            <p>主要信息2</p>
+            <p slot='footer'>底部信息列表</p>
+        </zz>
+
+        <zz>
+            <template slot="header">
+                <p>
+                    标题信息1
+                </p>
+                <p>
+                    标题信息2
+                </p>
+            </template>
+
+            <template slot="main">
+                <p>
+                   主要信息1 
+                </p>
+                <p>
+                    主要信息2
+                </p>
+            </template>
+
+            <template slot="footer">
+                <p>
+                    底部信息1
+                </p>
+                <p>
+                    底部信息2
+                </p>
+            </template>
+        </zz>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component('zz',{
+            template:`
+                <div>
+                    <header>
+                        <slot name='header'></slot>
+                    </header>
+                    <main>
+                        <slot name='main'><slot>
+                    </main>
+                    <footer>
+                        <slot name='footer'></slot>
+                    </footer>
+                </div>
+            `
+        })
+        let app = new Vue({
+            el:'#app',
+        })
+    </script>
+</body>
+</html>

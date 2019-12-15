@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <script src="./vue-router_3.0.2.js"></script>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/user">个人信息</router-link>
+        <router-link to="/list">列表</router-link>
+        <router-link to="/xlh">西蓝花</router-link>
+        <router-view></router-view>
+    </div>
+    <script>
+        let user = {template:`<h1>这是个人信息页</h1>`};
+        let list = {template:`<h1>这是列表页</h1>`};
+        let xlh = {template:`<h1>这是西蓝花</h1>`};
+        const router = new VueRouter({
+            routes:[
+                {path:'/',redirect:'/user'},
+                {path:'/user',component:user},
+                {path:'/list',component:list},
+                {path:'/xlh',component:xlh},
+            ]   
+        });
+        let app = new Vue({
+            el:'#app',
+            router,
+        })
+    </script>
+</body>
+</html>
