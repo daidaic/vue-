@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>{{ee}}</div>
+        <son @changee='handle($event)'></son>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        Vue.component('son',{
+            data(){
+                return {
+                    msg:'我是儿子'
+                }
+            },
+            template:`
+                <div>
+                    <button @click='$emit("changee",msg)'>传值开始</button>
+                    <div v-text=msg></div>
+                </div>
+                `
+        })
+        let app = new Vue({
+            el:'#app',
+            data:{
+                ee:'123'
+            },
+            methods: {
+                handle(tt){
+                    this.ee=tt;
+                }
+            },
+        })
+    </script>
+</body>
+</html>
