@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2>{{msg}}</h2>
+      <my-son :tt="msg" @zizi="getValue($event)"></my-son>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      Vue.component("my-son", {
+          //先完成子传父
+        props: ["tt"],
+        template: `
+                <input type='text' :value='tt' @input = 'handle'>
+            `,
+        methods: {
+          handle(e) {
+            this.$emit("zizi", e.target.value);
+          }
+        }
+      });
+      let app = new Vue({
+        el: "#app",
+        data: {
+          msg: "哦哈哟,米娜桑"
+        },
+        methods: {
+          getValue(key) {
+            this.msg = key;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
